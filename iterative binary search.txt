@@ -1,0 +1,37 @@
+Iterative binary search ( İteratif ikili arama)
+
+def binarySearch(array, x): 
+    kucuk = 0  
+    buyuk = len(array) - 1 
+    orta = 0 
+  
+    while kucuk <= buyuk:
+  
+        orta = (buyuk + kucuk) // 2
+  
+        
+        if array[orta] < x: 					# Ortada eleman varsa kullanilir.
+            kucuk = orta + 1
+  
+       
+        elif array[orta] > x: 					# Eger x ortalamadan buyukkse sol dizi iptal edilir.
+            buyuk = orta - 1
+  
+        
+        else:                                                  # Eger x ortalamadan kucukse sag dizi iptal edilir.
+            return orta
+  
+    						
+    return -1							# Eleman mevcut degilse buraya gelir.
+  
+
+array = [7,12,14,38,57] 					# Test dizisi 
+x =10
+  
+
+result = binarySearch(array, x)                                # Fonksiyon cagrisi
+  
+if result != -1: 
+    print("Oge dizide mevcut!", str(result)) 
+else: 
+    print("Oge dizide mevcut degil!")

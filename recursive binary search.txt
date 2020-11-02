@@ -1,0 +1,36 @@
+# Recursive binary search (Özyinelemeli ikili arama)
+
+def binarySearch(array, kucuk,buyuk, x): 
+   
+    if buyuk >= kucuk: 
+  
+        orta = (buyuk+ kucuk) // 2
+  
+        if array[orta] == x:                                 # Ortada eleman varsa ve x degerine esitse kullanilir.
+            return orta 
+  
+       
+        elif array[orta] > x:                                # Aranan oge orta degerden kucuk ise dizinin sol kısmına bakilir.
+            return binarySearch(array, kucuk, orta - 1, x) 
+  
+       
+        else: 
+            return binarySearch(array, orta + 1, buyuk, x)    # Diger durumda sadece eleman sag tarafta bakilir.
+  
+    else: 
+        						      # Dizide eleman yoksa.			    
+        return -1                                            
+    
+
+ 
+array = [4,9,14,17,21] 					      # Test edilecen dizi
+x = 10
+  
+
+result = binarySearch(array, 0, len(array)-1, x)               # Fonksiyon cagrisi
+   
+if result != -1: 
+    print("Dizide mevcut!", str(result)) 
+else: 
+    print("Dizide oge mevcut degil!") 
+
